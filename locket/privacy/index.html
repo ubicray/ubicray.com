@@ -8,54 +8,68 @@
       content="Privacy policy for Locket, the private, on-device AI journal by ubicray."
     />
     <title>Locket Privacy Policy · ubicray</title>
-    <link rel="stylesheet" href="../../styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-bg: #f5efe6;
+        --color-fg: #2f302c;
+        --color-muted: #6b665c;
+        --color-tertiary: #978d7d;
+        --color-primary: #4b6658;
+        --color-border: #e1d6c8;
+        --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   </head>
-  <body>
-    <main class="page">
-      <nav class="crumbs" aria-label="Breadcrumb">
-        <a href="../../">ubicray</a>
-        <span>/</span>
-        <a href="../">Locket</a>
+  <body class="min-h-screen bg-bg font-sans text-fg antialiased">
+    <main class="mx-auto max-w-2xl px-6 pb-24 pt-20 sm:pt-24">
+      <nav class="mb-6 flex items-center gap-2 text-sm text-muted" aria-label="Breadcrumb">
+        <a href="../../" class="hover:text-primary">ubicray</a>
+        <span class="text-tertiary">/</span>
+        <a href="../" class="hover:text-primary">Locket</a>
       </nav>
 
-      <p class="eyebrow">Privacy Policy</p>
-      <h1>Locket</h1>
-      <p class="muted">Last updated: April 5, 2026</p>
-      <p class="lede">
+      <p class="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-muted">Privacy Policy</p>
+      <h1 class="text-4xl font-semibold leading-none tracking-[-0.06em] sm:text-6xl">Locket</h1>
+      <p class="mt-3 text-sm text-tertiary">Last updated: April 5, 2026</p>
+      <p class="mt-4 max-w-xl leading-relaxed text-muted">
         Locket is designed to keep your journal content on your device.
       </p>
 
-      <section>
-        <h2>What Locket stores</h2>
-        <p>
+      <section class="mt-8 border-t border-border pt-5">
+        <h2 class="mb-2 font-medium">What Locket stores</h2>
+        <p class="leading-relaxed text-muted">
           Journal entries, transcribed text, moods, cues, chat history, settings, and related local model data are stored on your device.
         </p>
       </section>
 
-      <section>
-        <h2>What Locket sends</h2>
-        <p>
-          Locket does not send your thoughts or spoken input to servers for AI processing or training. Speech-to-text runs on-device, audio is not stored.
+      <section class="mt-6 border-t border-border pt-5">
+        <h2 class="mb-2 font-medium">What Locket sends</h2>
+        <p class="leading-relaxed text-muted">
+          Locket does not send your thoughts or spoken input to servers for AI processing or training. Speech&#8209;to&#8209;text runs on&#8209;device, audio is not stored.
         </p>
       </section>
 
-      <section>
-        <h2>Network use</h2>
-        <p>
-          On first launch, Locket downloads public AI model files from Hugging Face into app-private storage. After download, inference runs locally on-device.
+      <section class="mt-6 border-t border-border pt-5">
+        <h2 class="mb-2 font-medium">Network use</h2>
+        <p class="leading-relaxed text-muted">
+          On first launch, Locket downloads public AI model files from Hugging Face into app&#8209;private storage. After download, inference runs locally on&#8209;device.
         </p>
       </section>
 
-      <section>
-        <h2>Your control</h2>
-        <p>
+      <section class="mt-6 border-t border-border pt-5">
+        <h2 class="mb-2 font-medium">Your control</h2>
+        <p class="leading-relaxed text-muted">
           You can remove app data by deleting journal entries inside the app or uninstalling the app from your device.
         </p>
       </section>
 
-      <section>
-        <h2>Questions</h2>
-        <p>
+      <section class="mt-6 border-t border-border pt-5">
+        <h2 class="mb-2 font-medium">Questions</h2>
+        <p class="leading-relaxed text-muted">
           For privacy questions, please use the developer contact listed on the app's Google Play listing.
         </p>
       </section>

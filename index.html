@@ -8,15 +8,29 @@
       content="ubicray builds minimal software. Locket is a private, on-device AI journal."
     />
     <title>ubicray</title>
-    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-bg: #f5efe6;
+        --color-fg: #2f302c;
+        --color-muted: #6b665c;
+        --color-tertiary: #978d7d;
+        --color-primary: #4b6658;
+        --color-border: #e1d6c8;
+        --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   </head>
-  <body>
-    <main class="page">
-      <p class="eyebrow">ubicray</p>
-      <h1>Software.</h1>
+  <body class="min-h-screen bg-bg font-sans text-fg antialiased">
+    <main class="mx-auto max-w-2xl px-6 pb-24 pt-20 sm:pt-24">
+      <p class="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-muted">ubicray</p>
+      <h1 class="text-5xl font-semibold leading-none tracking-[-0.06em] sm:text-7xl">Software.</h1>
 
-      <nav class="links" aria-label="Primary">
-        <a href="locket/">Locket</a>
+      <nav class="mt-8 flex gap-4" aria-label="Primary">
+        <a href="locket/" class="text-primary underline decoration-1 underline-offset-4 hover:decoration-2">Locket</a>
       </nav>
     </main>
   </body>

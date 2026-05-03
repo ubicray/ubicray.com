@@ -5,40 +5,294 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Locket is a private, on-device AI journal. Your thoughts stay on your device."
+      content="Locket is a journal that writes back — instantly, because the model lives on your phone."
     />
-    <title>Locket · ubicray</title>
+    <title>Locket — a journal that writes back</title>
+    <link rel="icon" type="image/svg+xml" href="icon.svg" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style type="text/tailwindcss">
       @theme {
-        --color-bg: #f5efe6;
-        --color-fg: #2f302c;
-        --color-muted: #6b665c;
-        --color-tertiary: #978d7d;
-        --color-primary: #4b6658;
-        --color-border: #e1d6c8;
-        --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+        --color-bg: #f8faf9;
+        --color-surface: #ffffff;
+        --color-surface-low: #f2f4f4;
+        --color-surface-mid: #eceeee;
+
+        --color-fg: #191c1c;
+        --color-fg-soft: #3c4949;
+        --color-fg-faint: #6c7a79;
+
+        --color-border: #bbc9c8;
+        --color-border-soft: #d8dada;
+
+        --color-primary: #006a6a;
+        --color-cue-soft: #bae8e7;
+        --color-cue-surface: #f2f4f4;
+        --color-tertiary: #7e5700;
+        --color-tertiary-soft: #ffdeab;
+
+        --color-happy: #2f755f;
+        --color-happy-soft: #d6eee5;
+        --color-content: #32716f;
+        --color-content-soft: #d7efee;
+        --color-anxious: #986f1e;
+        --color-anxious-soft: #f4e5c7;
+        --color-excited: #9a6730;
+        --color-excited-soft: #f1dfcc;
+        --color-hopeful: #4f7961;
+        --color-hopeful-soft: #dbece0;
+        --color-grateful: #746a28;
+        --color-grateful-soft: #ebe7c9;
+        --color-sad: #536d8f;
+        --color-sad-soft: #dfe8f4;
+        --color-neutral: #6c7a79;
+        --color-neutral-soft: #e1e8e7;
+
+        --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+        --font-serif: "Newsreader", ui-serif, Georgia, serif;
       }
+
+      summary { list-style: none; }
+      summary::-webkit-details-marker { display: none; }
+
+      @keyframes drift {
+        0%, 100% { transform: translate(0, 0); }
+        50%      { transform: translate(2px, -3px); }
+      }
+      .drift { animation: drift 6s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500;1,6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body class="min-h-screen bg-bg font-sans text-fg antialiased">
-    <main class="mx-auto max-w-2xl px-6 pb-24 pt-20 sm:pt-24">
-      <nav class="mb-6 flex items-center gap-2 text-sm text-muted" aria-label="Breadcrumb">
-        <a href="../" class="hover:text-primary">ubicray</a>
+    <main class="mx-auto max-w-2xl px-6 pb-20 pt-8 sm:pt-12">
+      <!-- Site nav back to ubicray -->
+      <nav class="mb-8 text-xs uppercase tracking-[0.24em] text-fg-faint" aria-label="Breadcrumb">
+        <a href="../" class="transition-colors hover:text-primary">ubicray</a>
       </nav>
 
-      <p class="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-muted">Locket</p>
-      <h1 class="text-4xl font-semibold leading-none tracking-[-0.06em] sm:text-6xl">Private, on&#8209;device AI&nbsp;journal.</h1>
-      <p class="mt-5 max-w-xl leading-relaxed text-muted">
-        Write or speak thoughts. Speech is converted to text on-device, audio is not stored, and inference runs locally. No cloud. No server&#8209;side&nbsp;AI.
-      </p>
+      <!-- Locket masthead -->
+      <header class="flex items-center justify-between gap-3 border-b border-border-soft pb-5">
+        <span class="font-serif text-2xl font-medium tracking-tight">Locket</span>
+        <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-fg-faint">private journal</span>
+      </header>
 
-      <nav class="mt-8 flex gap-4" aria-label="Locket links">
-        <a href="privacy/" class="text-primary underline decoration-1 underline-offset-4 hover:decoration-2">Privacy policy</a>
-      </nav>
+      <!-- Hero -->
+      <section class="pt-14 sm:pt-16">
+        <h1 class="font-serif text-[40px] font-medium leading-[1.05] tracking-[-0.02em] sm:text-[60px]">
+          AI journal that respects your<em class="font-medium italic text-primary"> privacy</em>
+        </h1>
+        <p class="mt-6 max-w-md text-lg leading-relaxed text-fg-soft">
+          Locket reads what you wrote, finds patterns, and asks a question worth sitting with. Instantly, because the AI runs on your phone.
+        </p>
+
+        <div class="mt-9 flex flex-wrap items-center gap-3">
+          <a
+            href="#download"
+            class="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-white transition-colors hover:bg-fg"
+          >
+            Get Locket
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-0.5">
+              <path d="M5 12h14M13 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Product surface: real app screenshots in soft phone frames -->
+        <div class="mt-16 sm:mt-20">
+          <div class="flex items-start justify-center gap-2 sm:gap-5">
+            <div class="w-[150px] shrink-0 -translate-y-2 sm:w-[230px]">
+              <div class="overflow-hidden rounded-[32px] border-[7px] border-fg bg-white shadow-[0_30px_60px_-30px_rgba(20,63,63,0.35),0_18px_36px_-18px_rgba(20,63,63,0.18)] sm:rounded-[36px] sm:border-[8px]">
+                <img src="screens/home.png" alt="Locket calendar with the current week highlighted" class="block h-auto w-full" />
+              </div>
+            </div>
+            <div class="w-[150px] shrink-0 translate-y-6 sm:w-[230px]">
+              <div class="overflow-hidden rounded-[32px] border-[7px] border-fg bg-fg shadow-[0_30px_60px_-30px_rgba(20,63,63,0.35),0_18px_36px_-18px_rgba(20,63,63,0.18)] sm:rounded-[36px] sm:border-[8px]">
+                <img src="screens/dark.png" alt="Locket in dark mode showing a thought cloud and a recent entry" class="block h-auto w-full" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why journal -->
+      <section id="why" class="mt-28 pt-4 sm:mt-32">
+        <p class="mb-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-primary">
+          <span class="inline-block h-1.5 w-1.5 rounded-full bg-primary"></span>
+          Why journal
+        </p>
+        <h2 class="font-serif text-[32px] font-medium leading-[1.1] tracking-[-0.02em] sm:text-5xl">
+          Writing changes the <em class="font-medium italic text-primary">shape</em> of a day.
+        </h2>
+
+        <div class="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-3">
+          <article>
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-happy-soft px-3 py-1 text-xs font-medium text-happy">
+              <span class="h-1.5 w-1.5 rounded-full bg-happy"></span>
+              Happy
+            </span>
+            <h3 class="mt-4 font-serif text-xl font-medium leading-snug tracking-tight">Name what you're feeling.</h3>
+            <p class="mt-2 leading-relaxed text-fg-soft">Putting a feeling into a sentence loosens its grip.</p>
+          </article>
+          <article>
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-excited-soft px-3 py-1 text-xs font-medium text-excited">
+              <span class="h-1.5 w-1.5 rounded-full bg-excited"></span>
+              Excited
+            </span>
+            <h3 class="mt-4 font-serif text-xl font-medium leading-snug tracking-tight">See the pattern.</h3>
+            <p class="mt-2 leading-relaxed text-fg-soft">One thought is a moment; many are a shape. Your month fills with mood&#8209;tinted dots.</p>
+          </article>
+          <article>
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-hopeful-soft px-3 py-1 text-xs font-medium text-hopeful">
+              <span class="h-1.5 w-1.5 rounded-full bg-hopeful"></span>
+              Hopeful
+            </span>
+            <h3 class="mt-4 font-serif text-xl font-medium leading-snug tracking-tight">Get a better question.</h3>
+            <p class="mt-2 leading-relaxed text-fg-soft">Locket offers a cue drawn from your own words &mdash; not advice, not analysis.</p>
+          </article>
+        </div>
+
+        <p class="mt-12 max-w-xl text-sm leading-relaxed text-fg-faint">
+          Expressive writing has been studied since the 1980s. <a href="https://www.apa.org/news/podcasts/speaking-of-psychology/expressive-writing" target="_blank" rel="noopener" class="text-primary underline decoration-1 underline-offset-4 hover:decoration-2">Decades of research</a> link it to lower rumination, better mood, and improved wellbeing.
+        </p>
+      </section>
+
+      <!-- Thought cloud preview -->
+      <section class="mt-24 sm:mt-28">
+        <div class="rounded-[32px] border border-border-soft bg-surface px-6 py-10 sm:px-10 sm:py-12">
+          <div class="grid items-center gap-8 sm:grid-cols-[1fr_1fr] sm:gap-10">
+            <div>
+              <p class="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-primary">
+                <span class="inline-block h-1.5 w-1.5 rounded-full bg-primary"></span>
+                Thought cloud
+              </p>
+              <h3 class="font-serif text-[26px] font-medium leading-[1.15] tracking-[-0.02em] sm:text-[32px]">
+                The shape of a <em class="italic text-primary">month</em>.
+              </h3>
+              <p class="mt-4 leading-relaxed text-fg-soft">
+                Each thought becomes a mood&#8209;tinted dot. They cluster around what you've been carrying &mdash; joy, anxiety, hope, the in&#8209;between &mdash; whether you wrote once today or six times. The shape is yours to read.
+              </p>
+            </div>
+            <svg viewBox="0 0 280 220" class="w-full" aria-hidden="true">
+              <g stroke="#bbc9c8" stroke-width="0.8" opacity="0.55">
+                <line x1="60" y1="60" x2="130" y2="42" />
+                <line x1="130" y1="42" x2="200" y2="72" />
+                <line x1="60" y1="60" x2="100" y2="128" />
+                <line x1="200" y1="72" x2="170" y2="128" />
+                <line x1="100" y1="128" x2="170" y2="128" />
+                <line x1="100" y1="128" x2="78" y2="184" />
+                <line x1="170" y1="128" x2="220" y2="174" />
+                <line x1="220" y1="174" x2="170" y2="128" />
+              </g>
+              <circle cx="60"  cy="60"  r="14" fill="#d6eee5" stroke="#2f755f" stroke-width="2"/>
+              <circle cx="130" cy="42"  r="11" fill="#dbece0" stroke="#4f7961" stroke-width="2"/>
+              <circle cx="200" cy="72"  r="13" fill="#f4e5c7" stroke="#986f1e" stroke-width="2"/>
+              <circle cx="100" cy="128" r="20" fill="#f1dfcc" stroke="#9a6730" stroke-width="2" class="drift"/>
+              <circle cx="170" cy="128" r="12" fill="#ebe7c9" stroke="#746a28" stroke-width="2"/>
+              <circle cx="78"  cy="184" r="9"  fill="#dfe8f4" stroke="#536d8f" stroke-width="2"/>
+              <circle cx="220" cy="174" r="14" fill="#d7efee" stroke="#32716f" stroke-width="2"/>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- Instant, because it's local -->
+      <section class="mt-24 sm:mt-28">
+        <p class="mb-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-primary">
+          <span class="inline-block h-1.5 w-1.5 rounded-full bg-primary"></span>
+          On your phone
+        </p>
+        <h2 class="font-serif text-[32px] font-medium leading-[1.1] tracking-[-0.02em] sm:text-5xl">
+          Fast, because it's <em class="font-medium italic text-primary">local</em>.
+        </h2>
+
+      <!-- FAQ -->
+      <section class="mt-24 sm:mt-28">
+        <p class="mb-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-primary">
+          <span class="inline-block h-1.5 w-1.5 rounded-full bg-primary"></span>
+          Questions
+        </p>
+        <h2 class="font-serif text-[32px] font-medium leading-[1.1] tracking-[-0.02em] sm:text-5xl">
+          Things people <em class="font-medium italic text-primary">ask</em>.
+        </h2>
+
+        <div class="mt-10 divide-y divide-border-soft border-y border-border-soft">
+          <details class="group py-6">
+            <summary class="flex cursor-pointer items-baseline justify-between gap-4">
+              <h3 class="font-serif text-xl font-medium leading-snug">Is the AI any good if it runs on a phone?</h3>
+              <svg class="mt-1 h-4 w-4 shrink-0 text-fg-faint transition-transform duration-200 group-open:rotate-45" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </summary>
+            <p class="mt-3 max-w-2xl leading-relaxed text-fg-soft">
+              On&#8209;device models are smaller than cloud&#8209;frontier ones. For what Locket does &mdash; naming a feeling, asking a better question &mdash; that's a fine trade. And because there's no network round&#8209;trip, the smaller model often feels faster than a bigger one would.
+            </p>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex cursor-pointer items-baseline justify-between gap-4">
+              <h3 class="font-serif text-xl font-medium leading-snug">Why no account?</h3>
+              <svg class="mt-1 h-4 w-4 shrink-0 text-fg-faint transition-transform duration-200 group-open:rotate-45" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </summary>
+            <p class="mt-3 max-w-2xl leading-relaxed text-fg-soft">
+              An account would mean your entries living somewhere other than your phone. Locket trades cross&#8209;device sync for an architecture that doesn't ask you to trust a server.
+            </p>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex cursor-pointer items-baseline justify-between gap-4">
+              <h3 class="font-serif text-xl font-medium leading-snug">What happens if I switch phones or uninstall?</h3>
+              <svg class="mt-1 h-4 w-4 shrink-0 text-fg-faint transition-transform duration-200 group-open:rotate-45" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </summary>
+            <p class="mt-3 max-w-2xl leading-relaxed text-fg-soft">
+              Your entries live in the app's storage on the device. Uninstalling removes them; nothing is copied anywhere else.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section id="download" class="mt-24 text-center sm:mt-28">
+        <h2 class="font-serif text-[36px] font-medium leading-none tracking-[-0.02em] sm:text-5xl">
+          Start <em class="font-medium italic text-primary">tonight</em>.
+        </h2>
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          <a href="#" class="inline-flex items-center gap-3 rounded-full bg-fg px-6 py-3 text-white transition-opacity hover:opacity-90">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.05 12.04c-.03-3.12 2.55-4.62 2.67-4.69-1.46-2.13-3.73-2.42-4.53-2.45-1.92-.2-3.76 1.13-4.74 1.13-.97 0-2.49-1.11-4.1-1.08-2.1.03-4.07 1.23-5.15 3.11-2.21 3.83-.56 9.49 1.58 12.6 1.07 1.52 2.34 3.23 4 3.17 1.61-.06 2.22-1.04 4.16-1.04s2.49 1.04 4.18 1c1.73-.03 2.82-1.55 3.86-3.08 1.23-1.77 1.73-3.5 1.75-3.59-.04-.01-3.34-1.28-3.38-5.08zM14.13 3.27c.86-1.05 1.45-2.51 1.29-3.97-1.25.05-2.78.84-3.68 1.88-.81.92-1.52 2.41-1.33 3.83 1.4.11 2.83-.71 3.72-1.74z" />
+            </svg>
+            <span class="text-left">
+              <span class="block text-[10px] uppercase leading-tight tracking-wider opacity-70">Download on the</span>
+              <span class="block text-base font-semibold leading-tight">App Store</span>
+            </span>
+          </a>
+          <a href="#" class="inline-flex items-center gap-3 rounded-full bg-fg px-6 py-3 text-white transition-opacity hover:opacity-90">
+            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M3.18 1.55c-.36.4-.57.99-.57 1.77v17.36c0 .78.21 1.37.57 1.77l9.46-10.45L3.18 1.55zm10.93 11.71l2.8 3.09 3.74-2.13c.95-.54.95-1.4 0-1.94l-3.74-2.13-2.8 3.11zm-1.06-1.18l3.07-3.4L4.55 1.07c-.45-.25-.86-.27-1.16-.06l9.66 11.07zm0 2.36L3.39 25.51c.31.21.71.19 1.16-.06l11.57-7.61-3.07-3.4z" />
+            </svg>
+            <span class="text-left">
+              <span class="block text-[10px] uppercase leading-tight tracking-wider opacity-70">Get it on</span>
+              <span class="block text-base font-semibold leading-tight">Google Play</span>
+            </span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="mt-24 flex flex-wrap items-center justify-between gap-4 border-t border-border-soft pt-6 text-sm">
+        <a href="../" class="font-serif text-base font-medium tracking-tight text-fg transition-colors hover:text-primary">Locket</a>
+        <div class="flex gap-6 text-fg-faint">
+          <a href="privacy/" class="transition-colors hover:text-primary">Privacy</a>
+          <a href="mailto:hello@ubicray.com" class="transition-colors hover:text-primary">Contact</a>
+        </div>
+      </footer>
     </main>
   </body>
 </html>

@@ -127,7 +127,6 @@ def main():
 
     targets = [
         (icon_1024, ROOT / 'ubicray.com' / 'icon.png'),
-        (icon_1024, ROOT / 'ubicray.com' / 'locket' / 'icon.png'),
         (icon_512,  ROOT / 'ubicray.com' / 'locket-play-store-icon.png'),
         (icon_1024, ROOT / 'android' / 'locket_rn' / 'assets' / 'icon.png'),
         (adaptive,  ROOT / 'android' / 'locket_rn' / 'assets' / 'adaptive-icon.png'),
